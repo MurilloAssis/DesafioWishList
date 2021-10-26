@@ -1,0 +1,3 @@
+Foi criado o banco de dados e também duas tabelas no DDL(usuario e desejo).
+No DML foi inserido alguns valores correspondentes a usuario e desejo.
+E por fim no DQL foi listado cada tabela com seus dados.

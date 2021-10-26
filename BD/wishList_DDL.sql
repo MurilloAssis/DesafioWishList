@@ -1,0 +1,19 @@
+CREATE DATABASE WISH_LIST;
+GO
+
+USE WISH_LIST;
+GO
+
+CREATE TABLE usuario (
+  idUsuario INT PRIMARY KEY IDENTITY,
+  email VARCHAR(256) UNIQUE NOT NULL,
+  senha CHAR(10) NOT NULL CHECK( len(senha) >= 8)
+);
+GO
+
+CREATE TABLE desejo (
+  idDesejo INT PRIMARY KEY IDENTITY,
+  idUsuario INT FOREIGN KEY REFERENCES usuario(idUsuario),
+  descricao VARCHAR(500) NOT NULL
+);
+GO
