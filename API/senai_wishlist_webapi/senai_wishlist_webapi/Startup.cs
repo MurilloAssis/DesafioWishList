@@ -31,24 +31,7 @@ namespace senai_wishlist_webapi
 
                 });
 
-            services.AddAuthentication(options =>
-            {
-                options.DefaultAuthenticateScheme = "JwtBearer";
-                options.DefaultChallengeScheme = "JwtBearer";
-            })
-                .AddJwtBearer("JwtBearer", options =>
-                {
-                    options.TokenValidationParameters = new TokenValidationParameters
-                    {
-                        ValidateIssuer = true,
-                        ValidateAudience = true,
-                        ValidateLifetime = true,
-                        IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("senaiwishlistwebapi")),
-                        ClockSkew = TimeSpan.FromMinutes(40),
-                        ValidIssuer = "WishList.WebApi",
-                        ValidAudience = "WishList.WebApi"
-                    };
-                });
+            
 
             services.AddSwaggerGen(c =>
             {
@@ -81,9 +64,7 @@ namespace senai_wishlist_webapi
                 c.RoutePrefix = string.Empty;
             });
 
-            app.UseAuthentication();
-
-            app.UseAuthorization();
+           
 
             app.UseEndpoints(endpoints =>
             {

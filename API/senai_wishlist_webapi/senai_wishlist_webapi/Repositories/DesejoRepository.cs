@@ -24,6 +24,7 @@ namespace senai_wishlist_webapi.Repositories
                 {
                     IdDesejo = d.IdDesejo,
                     IdUsuario = d.IdUsuario,
+                    Titulo = d.Titulo,
                     Descricao = d.Descricao,
                     IdUsuarioNavigation = new Usuario()
                     {

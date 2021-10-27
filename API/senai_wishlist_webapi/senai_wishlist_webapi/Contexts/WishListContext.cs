@@ -37,7 +37,7 @@ namespace senai_wishlist_webapi.Contexts
             modelBuilder.Entity<Desejo>(entity =>
             {
                 entity.HasKey(e => e.IdDesejo)
-                    .HasName("PK__desejo__5DB1341F9977D242");
+                    .HasName("PK__desejo__5DB1341F8524C5E3");
 
                 entity.ToTable("desejo");
 
@@ -51,6 +51,12 @@ namespace senai_wishlist_webapi.Contexts
 
                 entity.Property(e => e.IdUsuario).HasColumnName("idUsuario");
 
+                entity.Property(e => e.Titulo)
+                    .IsRequired()
+                    .HasMaxLength(100)
+                    .IsUnicode(false)
+                    .HasColumnName("titulo");
+
                 entity.HasOne(d => d.IdUsuarioNavigation)
                     .WithMany(p => p.Desejos)
                     .HasForeignKey(d => d.IdUsuario)
@@ -60,11 +66,11 @@ namespace senai_wishlist_webapi.Contexts
             modelBuilder.Entity<Usuario>(entity =>
             {
                 entity.HasKey(e => e.IdUsuario)
-                    .HasName("PK__usuario__645723A61454DD6A");
+                    .HasName("PK__usuario__645723A6AED3C627");
 
                 entity.ToTable("usuario");
 
-                entity.HasIndex(e => e.Email, "UQ__usuario__AB6E61649F4CD4EA")
+                entity.HasIndex(e => e.Email, "UQ__usuario__AB6E61640654B50B")
                     .IsUnique();
 
                 entity.Property(e => e.IdUsuario).HasColumnName("idUsuario");

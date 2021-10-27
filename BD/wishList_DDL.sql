@@ -14,6 +14,7 @@ GO
 CREATE TABLE desejo (
   idDesejo INT PRIMARY KEY IDENTITY,
   idUsuario INT FOREIGN KEY REFERENCES usuario(idUsuario),
+  titulo VARCHAR(100) NOT NULL,
   descricao VARCHAR(500) NOT NULL
 );
 GO

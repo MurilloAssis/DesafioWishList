@@ -32,11 +32,10 @@ namespace senai_wishlist_webapi.Controllers
 
             return StatusCode(201, lista);
         }
-        [Authorize]
+   
         [HttpPost]
         public IActionResult Cadastrar(Desejo novoDesejo)
         {
-            novoDesejo.IdUsuario = Convert.ToInt32(HttpContext.User.Claims.First(c => c.Type == JwtRegisteredClaimNames.Jti).Value);
             _desejoRepository.cadastrarDesejos(novoDesejo);
 
             return StatusCode(201);
