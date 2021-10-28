@@ -31,7 +31,16 @@ namespace senai_wishlist_webapi
 
                 });
 
-            
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                                builder =>
+                                {
+                                    builder.WithOrigins("http://localhost:3000")
+                                    .AllowAnyHeader()
+                                    .AllowAnyMethod();
+                                });
+            });
 
             services.AddSwaggerGen(c =>
             {
@@ -55,6 +64,8 @@ namespace senai_wishlist_webapi
             }
 
             app.UseRouting();
+
+            app.UseCors("CorsPolicy");
 
             app.UseSwagger();
 
